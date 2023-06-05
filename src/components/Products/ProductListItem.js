@@ -1,9 +1,21 @@
+import { useState } from "react";
 import styles from "./ProductListItem.module.css";
 
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 
-const ProductListItem = ({ title, description, price }) => {
+const ProductListItem = ({ id, onAddProduct, title, description, price }) => {
+    const [amount, setAmount] = useState(1);
+    const handleAmountChange = (event) => {
+        setAmount(event.target.value);
+    };
+    const handleAddClick = (event) => {
+        onAddProduct({
+            id: event.target.getAttribute("id"),
+            amount,
+        });
+    };
+
     return (
         <Card className={styles["product-list-item"]}>
             <div className={styles["product-list-item__info"]}>
@@ -23,12 +35,18 @@ const ProductListItem = ({ title, description, price }) => {
                     Amount
                 </label>
                 <input
+                    value={amount}
+                    onChange={handleAmountChange}
                     className={styles["product-list-item__amount-number"]}
                     type="number"
-                    min="0"
+                    min="1"
                     id="amount"
                 />
-                <Button className={styles["product-list-item__button"]}>
+                <Button
+                    id={id}
+                    onClick={handleAddClick}
+                    className={styles["product-list-item__button"]}
+                >
                     + Add
                 </Button>
             </div>

@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import styles from "./ProductsList.module.css";
 
 import ProductListItem from "./ProductListItem";
+import ProductsContext from "../../store/products-context";
 
 const ProductsList = () => {
     const DUMMY_PRODUCTS = [
@@ -53,14 +55,29 @@ const ProductsList = () => {
             price: "12.90",
         },
     ];
+    const productsContext = useContext(ProductsContext);
+
+    const handleAddProduct = ({ id, amount }) => {
+        const productToAdd = DUMMY_PRODUCTS.filter(
+            (product) => product.id === id
+        )[0];
+
+        productsContext.onAddProduct({
+            ...productToAdd,
+            amount,
+        });
+    };
+
     return (
         <ul className={styles["product-list"]}>
             {DUMMY_PRODUCTS.map(({ id, name, description, price }) => (
                 <ProductListItem
                     key={id}
+                    id={id}
                     title={name}
                     description={description}
                     price={price}
+                    onAddProduct={handleAddProduct}
                 />
             ))}
         </ul>

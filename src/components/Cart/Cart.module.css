@@ -1,0 +1,21 @@
+.cart-total-amount {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-actions__close {
+    margin-right: 1rem;
+    background-color: #ffffff;
+    color: #b6cc76;
+    border: 2px solid #b6cc76;
+}
+.cart-actions__close:hover {
+    background-color: #b6cc76;
+    color: #ffffff;
+}

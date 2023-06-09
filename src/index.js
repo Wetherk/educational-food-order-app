@@ -2,11 +2,11 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 import App from "./App";
-import { ProductsContextProvider } from "./store/products-context";
+import ProductsProvider from "./store/ProductsProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <ProductsContextProvider>
+    <ProductsProvider>
         <App />
-    </ProductsContextProvider>
+    </ProductsProvider>
 );

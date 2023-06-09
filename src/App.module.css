@@ -1,8 +1,20 @@
 .app {
-    background-image: url("./img/vector-background.svg");
+    background-image: url("./assets/vector-background.svg");
     top: 0;
     left: 0;
     position: absolute;
     min-width: 100%;
     min-height: 100%;
+}
+
+::-webkit-scrollbar {
+    background-color: #b6cc76;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #89cc7c;
 }

@@ -24,30 +24,10 @@
     font-weight: bold;
 }
 
-.product-list-item__actions {
+.product-list-item__form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-
-.product-list-item__amount-label {
-    margin-bottom: 5px;
-}
-
-.product-list-item__amount-number {
-    appearance: none;
-    background-color: #f7f7f7;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px;
-    width: 60px;
-    font-size: 1rem;
-    color: #333;
-    outline: none;
-}
-
-.product-list-item__amount-number:focus {
-    outline: 2px solid #b6cc76;
+    align-items: center;
 }
 
 .product-list-item__button {

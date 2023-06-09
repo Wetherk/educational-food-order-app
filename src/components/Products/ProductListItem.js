@@ -1,21 +1,12 @@
-import { useState } from "react";
+import { useContext, useRef } from "react";
 import styles from "./ProductListItem.module.css";
 
 import Button from "../UI/Button";
 import Card from "../UI/Card";
+import Input from "../UI/Input";
+import ProductsContext from "../../store/products-context";
 
-const ProductListItem = ({ id, onAddProduct, title, description, price }) => {
-    const [amount, setAmount] = useState(1);
-    const handleAmountChange = (event) => {
-        setAmount(event.target.value);
-    };
-    const handleAddClick = (event) => {
-        onAddProduct({
-            id: event.target.getAttribute("id"),
-            amount,
-        });
-    };
-
+const ProductListItem = ({ id, title, description, price }) => {
     return (
         <Card className={styles["product-list-item"]}>
             <div className={styles["product-list-item__info"]}>
@@ -27,30 +18,48 @@ const ProductListItem = ({ id, onAddProduct, title, description, price }) => {
                     className={styles["product-list-item__price"]}
                 >{`$${price}`}</p>
             </div>
-            <div className={styles["product-list-item__actions"]}>
-                <label
-                    className={styles["product-list-item__amount-label"]}
-                    htmlFor="amount"
-                >
-                    Amount
-                </label>
-                <input
-                    value={amount}
-                    onChange={handleAmountChange}
-                    className={styles["product-list-item__amount-number"]}
-                    type="number"
-                    min="1"
-                    id="amount"
-                />
-                <Button
-                    id={id}
-                    onClick={handleAddClick}
-                    className={styles["product-list-item__button"]}
-                >
-                    + Add
-                </Button>
-            </div>
+            <ProductListItemForm
+                id={id}
+                className={styles["product-list-item__form"]}
+            />
         </Card>
+    );
+};
+
+const ProductListItemForm = ({ className, id }) => {
+    const amountRef = useRef();
+    const productsContext = useContext(ProductsContext);
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+
+        productsContext.onAddCartProduct(
+            event.target.getAttribute("id"),
+            amountRef.current.value
+        );
+    };
+
+    return (
+        <form onSubmit={handleFormSubmit} id={id} className={className}>
+            <Input
+                ref={amountRef}
+                label="Amount"
+                id={`amount_${id} `}
+                input={{
+                    type: "number",
+                    defaultValue: "1",
+                    min: "1",
+                    max: "5",
+                    step: "1",
+                }}
+            />
+            <Button
+                id={id}
+                type="submit"
+                className={styles["product-list-item__button"]}
+            >
+                + Add
+            </Button>
+        </form>
     );
 };
 

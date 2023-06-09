@@ -1,0 +1,39 @@
+.shopping-cart-button__icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.shopping-cart-button__text {
+    margin-right: 5px;
+}
+
+.shopping-cart-button__number {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #487346;
+    border-radius: 20px;
+}
+
+.shopping-cart-button {
+    display: flex;
+    align-items: center;
+}
+
+@keyframes cartButtonAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.shopping-cart-button.add-animation {
+    animation-name: cartButtonAnimation;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}

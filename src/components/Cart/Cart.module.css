@@ -4,6 +4,15 @@
     margin-bottom: 2rem;
 }
 
+.cart-products-list {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.cart-products-list__not-found {
+    margin-bottom: 2rem;
+}
+
 .cart-actions {
     display: flex;
     justify-content: flex-end;

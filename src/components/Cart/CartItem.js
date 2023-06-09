@@ -2,13 +2,13 @@ import styles from "./CartItem.module.css";
 
 import Button from "../UI/Button";
 
-const CartItem = ({ id, title, price, amount, onItemAdd, onItemRemove }) => {
+const CartItem = ({ id, title, price, amount, onAdd, onRemove }) => {
     const handleRemoveClick = () => {
-        onItemRemove(id);
+        onRemove(id);
     };
 
     const handleAddClick = () => {
-        onItemAdd(id);
+        onAdd(id);
     };
 
     return (
